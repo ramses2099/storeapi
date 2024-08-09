@@ -181,6 +181,16 @@ class Category(Base):
     def __repr__(self) -> str:
         return f"Category {self.id!r} {self.description!r}"
     
+    @property
+    def serialize(self):
+        return {
+            "id": self.id,
+            "description": self.description,
+            "user_id": self.user_id,
+            "updated": self.updated,
+            "created": self.created
+        }
+    
 class Vendor(Base):
     __tablename__ = "Vendors"    
     
