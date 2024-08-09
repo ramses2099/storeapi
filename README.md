@@ -21,3 +21,5 @@ Project Flask. SqlAlchemy CI/CD Heroku
     - file __init__.py to the tests folder
 1. Setting path for pytest in this link
     - https://pytest-with-eric.com/introduction/pytest-pythonpath/
+1. Create requirements file
+    - pip freeze > requirements.txt
