@@ -37,6 +37,18 @@ class User(Base):
     def __repr__(self) -> str:
         return f"User {self.id} {self.username!r} {self.firstname!r} {self.lastname!r}"
     
+    @property
+    def serialize(self):
+        return {
+            "user_id": self.id,
+            "username": self.username,
+            "email": self.email,
+            "firstname": self.firstname,
+            "lastname": self.lastname,
+            "updated": self.updated,
+            "created": self.created
+        }
+    
 
 class Customer(Base):
     __tablename__ = "Customers"    
@@ -62,6 +74,22 @@ class Customer(Base):
     
     def __repr__(self) -> str:
         return f"Customer {self.id} {self.firstname!r} {self.lastname!r}"
+    
+    @property
+    def serialize(self):
+        return {
+            "customer_id": self.id,
+            "firstname": self.firstname,
+            "lastname": self.lastname,
+            "streetaddress": self.streetaddress,
+            "city": self.city,
+            "state": self.state,
+            "zipcode": self.zipcode,
+            "phonenumber": self.phonenumber,
+            "email": self.email,
+            "updated": self.updated,
+            "created": self.created
+        }
 
     
 
@@ -89,6 +117,20 @@ class Order(Base):
     def __repr__(self) -> str:
         return f"Order {self.id!r}"
     
+    @property
+    def serialize(self):
+        return {
+            "order_id": self.id,
+            "orderdate": self.orderdate,
+            "shipdate": self.shipdate,
+            "ordertotal": self.ordertotal,
+            "customer_id": self.customer_id,
+            "employee_id": self.employee_id,
+            "user_id": self.user_id,
+            "updated": self.updated,
+            "created": self.created
+        }
+    
     
 class Order_Detail(Base):
     __tablename__ = "Order_Detatils"    
@@ -110,6 +152,20 @@ class Order_Detail(Base):
     
     def __repr__(self) -> str:
         return f"Order_Detail {self.id!r}"
+    
+    @property
+    def serialize(self):
+        return {
+            "order_detail_id": self.id,
+            "order_id": self.order_id,
+            "price": self.price,
+            "quantity": self.quantity,
+            "product_id": self.product_id,
+            "product_name": self.product.name,
+            "user_id": self.user_id,
+            "updated": self.updated,
+            "created": self.created
+        }
     
     
   
@@ -138,6 +194,20 @@ class Product(Base):
     def __repr__(self) -> str:
         return f"Product {self.id} {self.name!r} {self.description!r}"
     
+    @property
+    def serialize(self):
+        return {
+            "product_id": self.id,
+            "name": self.name,
+            "description": self.description,
+            "priceperunit": self.priceperunit,
+            "quantityonhand": self.quantityonhand,
+            "category_id": self.category_id,
+            "user_id": self.user_id,
+            "updated": self.updated,
+            "created": self.created
+        }
+    
     
 
 class Employee(Base):
@@ -165,6 +235,23 @@ class Employee(Base):
     def __repr__(self) -> str:
         return f"Employee {self.id!r} {self.username!r} {self.firstname!r} {self.lastname!r}"
     
+    @property
+    def serialize(self):
+        return {
+            "employee_id": self.id,
+            "firstname": self.firstname,
+            "lastname": self.lastname,
+            "streetaddress": self.streetaddress,
+            "city": self.city,
+            "state": self.state,
+            "zipcode": self.zipcode,
+            "phonenumber": self.phonenumber,
+            "email": self.email,
+            "dob": self.dob,
+            "updated": self.updated,
+            "created": self.created
+        }
+    
     
 class Category(Base):
     __tablename__ = "Categories"    
@@ -184,7 +271,7 @@ class Category(Base):
     @property
     def serialize(self):
         return {
-            "id": self.id,
+            "category_id": self.id,
             "description": self.description,
             "user_id": self.user_id,
             "updated": self.updated,
@@ -216,4 +303,20 @@ class Vendor(Base):
     
     def __repr__(self) -> str:
         return f"Vendor {self.id!r} {self.firstname!r} {self.lastname!r}"
+    
+    @property
+    def serialize(self):
+        return {
+            "vendor_id": self.id,
+            "firstname": self.firstname,
+            "lastname": self.lastname,
+            "streetaddress": self.streetaddress,
+            "city": self.city,
+            "state": self.state,
+            "zipcode": self.zipcode,
+            "phonenumber": self.phonenumber,
+            "email": self.email,
+            "updated": self.updated,
+            "created": self.created
+        }
     
