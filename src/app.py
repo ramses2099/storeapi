@@ -22,6 +22,10 @@ engine = create_engine(SQLALCHEMY_DATABASE_URI, echo=True)
 # create all table
 Base.metadata.create_all(engine)
 
+
+def create_app():
+    return app
+
 # routes
 @app.route("/signup", methods=["POST"])
 def signup():
